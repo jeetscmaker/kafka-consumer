@@ -17,12 +17,12 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 @Configuration
 public class KafkaConfig {
     @Value("${spring.kafka.consumer.bootstrap-servers}")
-    String serverUrl;
+    String kafkaServerUrl;
 
     @Bean
     public ConsumerFactory<String, Object> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, serverUrl);
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaServerUrl);
         config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_id");
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
